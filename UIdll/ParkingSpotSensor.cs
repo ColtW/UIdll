@@ -10,11 +10,18 @@ namespace UIdll
     {
         // CV Calls this class!
         // This here will show if there is a car in the spot using boolean
-        public bool Car()
+        public bool CarSpot()
         {
-            if(Car == true)
+            if( true)
             {
-
+                // If true then the spot is open.
+                CarSpot = true;
+                
+            }
+            else
+            {
+                // This will show the parking spot is taken.
+                // Using a false value.
             }
         }
     }
