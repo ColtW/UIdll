@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UIdll
 {
-    class Fee
+    public class Fee : RegisteredCustomer
     {
     }
 }

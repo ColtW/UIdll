@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UIdll
 {
-    class Operator
+    public class Operator : Employee
     {
     }
 }

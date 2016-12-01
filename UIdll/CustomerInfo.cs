@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UIdll
 {
-    public class LicensePlateRecognition : VehicleElevator
+    public class CustomerInfo : RegisteredCustomer
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UIdll
 {
-    interface IWebBrowser
+    public interface IWebBrowser
     {
     }
 }

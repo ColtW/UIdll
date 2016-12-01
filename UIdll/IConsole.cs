@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UIdll
 {
-    class IConsole
+    public interface IConsole
     {
     }
 }
