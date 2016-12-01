@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace UIdll
 {
-    public class Class1
+    class Person : ParkALot
     {
+
     }
 }
