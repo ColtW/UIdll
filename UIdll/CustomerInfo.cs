@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace UIdll
 {
+    //Spencer claims this class
     public class CustomerInfo : RegisteredCustomer
     {
     }
