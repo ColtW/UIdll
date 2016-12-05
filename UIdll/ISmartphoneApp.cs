@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UIdll
 {
-    interface ISmartphoneApp
+    public interface ISmartphoneApp
     {
     }
 }
