@@ -8,5 +8,7 @@ namespace UIdll
 {
     public class Fee : RegisteredCustomer
     {
+		//Cheryl is claiming this class
+		// I changed something
     }
 }
