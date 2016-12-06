@@ -15,10 +15,27 @@ namespace UIdll
         // Feel free to add to this class as needed!!!******************** 
         // CV Calls this class!
         // This here will show if there is a car in the spot using boolean
+
+
+        public void DetectAvailability() //Colt added a ParkingSpotSensor object that detects a car
+        {
+            List<bool> Spots = new List<bool>(400); //list of all 400 available spots
+            ParkingSpotSensor detecto9000 = new ParkingSpotSensor();
+
+            for(int i = 0; i <= Spots.Count; i++)
+            {
+                Spots[i] = true;
+
+     /*           if (LicensePlateRecognition.Equals(obj:true, obj:true)
+                    {
+                        
+                    } */
+            }
+        }
         
         public bool CarSpot()
         {
-            bool CarSpot = true;
+            bool CarSpot = true;//Naming convention error, almost gave me an anneurism
 
             if ( CarSpot == true)
             {
