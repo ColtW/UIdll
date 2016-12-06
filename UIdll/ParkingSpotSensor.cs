@@ -12,7 +12,7 @@ namespace UIdll
     public class ParkingSpotSensor : ParkALot
     {
 
-
+        // Feel free to add to this class as needed!!!******************** 
         // CV Calls this class!
         // This here will show if there is a car in the spot using boolean
         
