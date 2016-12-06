@@ -10,8 +10,8 @@ namespace UIdll
     {//Colt calls dibs on the Person class.
      //this class will declare properties that all persons will use
 
-        private int ID;                    //Allows for employees to sign in and customers to access/store vehicles
-        private int DOB;                   //verification purposes
+        public int ID;                    //Allows for employees to sign in and customers to access/store vehicles
+        public int DOB;                   //verification purposes
    
         public int securityClearenceLevel; //sets access allowance to people of different accounts (employee, guest, registered customer)
 
@@ -21,7 +21,7 @@ namespace UIdll
                                                 //if security level 3 --> open security guard UI? or maybe just camera feed
                                                 //if security level 4 --> open operator UI
 
-        public int name;                  //additional verification? may scrap
+        public string name;                  //additional verification? may scrap
 
     }
 }
