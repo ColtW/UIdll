@@ -13,7 +13,7 @@ namespace UIdll
      
         public void MakeRegistaredCustomer()
         {
-            Operator mrc = new Operator();
+            RegisteredCustomer mrc = new RegisteredCustomer();
 
             mrc.securityClearenceLevel = 2;
 
