@@ -13,6 +13,7 @@ namespace UIdll
      
         public void MakeRegistaredCustomer()
         {
+            //make this class talk with the window form for customers
             RegisteredCustomer mrc = new RegisteredCustomer();
 
             mrc.securityClearenceLevel = 2;
