@@ -11,7 +11,7 @@ namespace UIdll
     {//Colt isn't claiming this class but offering suggestions based on what I did in the Person superclass
      //check out my fields I declared in Person, make an operator object, and set the fields accordingly.
      
-        public void MakeRegistaredCustomer()
+        public void MakeRegisteredCustomer()
         {
             //make this class talk with the window form for customers
             RegisteredCustomer mrc = new RegisteredCustomer();

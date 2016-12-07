@@ -17,11 +17,11 @@ namespace UIdll
 
             nonMember.securityClearenceLevel = 1;
 
-            nonMember.ID = 0;
+            nonMember.username = "0";
 
             nonMember.name = "";
 
-            nonMember.DOB = 0;
+            nonMember.password = "0";
         }
        
 
