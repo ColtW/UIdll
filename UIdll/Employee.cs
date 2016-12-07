@@ -17,11 +17,11 @@ namespace UIdll
         {
             Operator worker = new Operator();
 
-            worker.DOB = 1982;
+            worker.username = "1982";
 
-            worker.ID = 038571;
+            worker.password = "038571";
 
-            worker.name = "Jethro ";
+            worker.name = "Jethro";
 
             worker.securityClearenceLevel = 4;
         }
