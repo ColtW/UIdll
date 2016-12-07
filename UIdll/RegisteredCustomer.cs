@@ -17,11 +17,11 @@ namespace UIdll
 
             mrc.securityClearenceLevel = 2;
 
-            mrc.ID = 0;
+            mrc.username = "0";
 
             mrc.name = "";
 
-            mrc.DOB = 0;
+            mrc.password = "0";
         }
     }
 }

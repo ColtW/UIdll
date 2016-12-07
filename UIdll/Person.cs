@@ -10,8 +10,8 @@ namespace UIdll
     {//Colt calls dibs on the Person class.
      //this class will declare properties that all persons will use
 
-        public int ID;                    //Allows for employees to sign in and customers to access/store vehicles
-        public int DOB;                   //verification purposes
+        public string username;                    //Allows for employees to sign in and customers to access/store vehicles
+        public string password;                   //verification purposes
    
         public int securityClearenceLevel; //sets access allowance to people of different accounts (employee, guest, registered customer)
 
