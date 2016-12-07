@@ -13,9 +13,9 @@ namespace UIdll
     {//Colt isn't claiming this class but offering suggestions based on what I did in the Person superclass
      //check out my fields I declared in Person, make an operator object, and set the fields accordingly.
 
-        public void EmployeeClass()
+        public void MakeEmployee()
         {
-            Employee worker = new Employee();
+            Operator worker = new Operator();
 
             worker.DOB = 1982;
 
