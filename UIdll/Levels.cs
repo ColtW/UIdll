@@ -15,12 +15,13 @@ namespace UIdll
         {
             Person clearLevel = new Person();
             clearLevel.securityClearenceLevel = 0;
-            if(clearLevel.securityClearenceLevel = 1)
+            if(clearLevel.securityClearenceLevel == 1)
             {
                 // They can only park on the ground level
                 Console.WriteLine("Guest parking is on the ground level. Please proceed to find a guest parking.");
             }
-            else if( clearLevel.securityClearenceLevel = 2 && 3 && 4)
+            else if (clearLevel.securityClearenceLevel == 2 &&
+                clearLevel.securityClearenceLevel == 3 && clearLevel.securityClearenceLevel == 4)
             {
                 Console.WriteLine("Membership and reserved parking is on the upper level! Please proceed to the elevator.");
             }
