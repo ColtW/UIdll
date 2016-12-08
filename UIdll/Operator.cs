@@ -11,8 +11,8 @@ namespace UIdll
         public void MakeOperator()
         {
             Operator billy = new Operator();
-            billy.DOB = 1987;
-            billy.ID = 044272;
+            billy.username = "1987";
+            billy.password = "044272";
             billy.name = "Billy McPearson";
             billy.securityClearenceLevel = 4;
         }
