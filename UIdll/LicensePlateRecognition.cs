@@ -24,8 +24,7 @@ namespace UIdll
             string licensePlate = String.Empty;
 
             try
-            {
-                // just a placeholder for now
+            {                
                 OCR = licensePlate;
             }
             catch(Exception ex)
@@ -43,15 +42,12 @@ namespace UIdll
 
             try
             {
-                // just a placeholder for now
                 OCR = licensePlate;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
-
             return licensePlate;
         }
 
