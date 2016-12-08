@@ -16,13 +16,13 @@ namespace UIdll
         {
             //This class will be used to insert info on customers into the data base.SR
             SqlConnection connection = new SqlConnection();
-            //connection.ConnectionString = "Server=cis1.actx.edu;DataBase=project;User Id=project;Password = myPassword;";
+            connection.ConnectionString = "Server=cis1.actx.edu;DataBase=project2;User Id=db2;Password = db20;";
             //above this is were we put in the info for our server what ever it happens to be.//
             connection.Open();
             //the following is for the insertion of data into the table of our DB
             using (SqlCommand insertNewCustomer = connection.CreateCommand())
             {
-                insertNewCustomer.CommandText = "insert into db_owner.Customer values();";
+                insertNewCustomer.CommandText = "insert into db2.Customer values();";
                 insertNewCustomer.ExecuteNonQuery();
             }
 
