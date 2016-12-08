@@ -21,7 +21,7 @@ namespace UIdll
         // Something to represent a Optical camera recognition
         public object OCR { get; set; }
 
-        public void ElevatorLicenseCam(DateTime time, bool licensePlateResult)
+        public void ElevatorLicenseCam(DateTime time, string licensePlateResult)
         {
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = "Server=cis1.actx.edu;Database=project2;User Id=db2;Password = db20;";
@@ -50,11 +50,12 @@ namespace UIdll
                             if(licensePlate == licensePlateMatch)
                             {
                                 time = DateTime.Now;
-                                licensePlateResult = true;
+                                licensePlateResult = licensePlate;
                                 tryAgain = true;
                             }
                             else
                             {
+                                licensePlateResult = licensePlate;
                                 time = DateTime.Now;
                             }
                         }
@@ -70,7 +71,7 @@ namespace UIdll
             connection.Close();
         }
 
-        public void ExitLicenseCam(DateTime time, bool licensePlateResult)
+        public void ExitLicenseCam(DateTime time, string licensePlateResult)
         {
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = "Server=cis1.actx.edu;Database=project2;User Id=db2;Password = db20;";
@@ -99,11 +100,12 @@ namespace UIdll
                             if (licensePlate == licensePlateMatch)
                             {
                                 time = DateTime.Now;
-                                licensePlateResult = true;
+                                licensePlateResult = licensePlate;
                                 tryAgain = true;
                             }
                             else
                             {
+                                licensePlateResult = licensePlate;
                                 time = DateTime.Now;
                             }
                         }
