@@ -8,8 +8,14 @@ namespace UIdll
 {
     // Trevor B will take this class on
     public class SecurityGaurd : Employee
-    {//Colt isn't claiming this class but offering suggestions based on what I did in the Person superclass
-     //check out my fields I declared in Person, make an operator object, and set the fields accordingly.
-
+    {
+        public void MakeSecurityGuard()
+        {
+            SecurityGaurd dwight = new SecurityGaurd();
+            dwight.name = "Dwight Schrute";
+            dwight.username = "dwightschrute";
+            dwight.password = "bearsbeets";
+            dwight.securityClearenceLevel = 3;
+        }
     }
 }

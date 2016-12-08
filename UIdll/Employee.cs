@@ -15,11 +15,11 @@ namespace UIdll
 
         public void MakeEmployee()
         {
-            Operator worker = new Operator();
+            Employee worker = new Employee();
 
-            worker.DOB = 1982;
+            worker.password = "1982";
 
-            worker.ID = 038571;
+            worker. username = "038571";
 
             worker.name = "Jethro ";
 

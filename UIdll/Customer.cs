@@ -12,15 +12,16 @@ namespace UIdll
         //check out my fields I declared in Person, make an operator object, and set the fields accordingly.
         public void MakeCustomer()
         {
+            //make this class talk to the customer window form.
             Operator nonMember = new Operator();
 
             nonMember.securityClearenceLevel = 1;
 
-            nonMember.ID = 0;
+            nonMember.username = "0";
 
             nonMember.name = "";
 
-            nonMember.DOB = 0;
+            nonMember.password = "0";
         }
        
 
