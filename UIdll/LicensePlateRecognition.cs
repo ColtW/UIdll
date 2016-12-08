@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data.SqlClient;
+using System.Data.Sql;
+
 namespace UIdll
 {
     // Claim for Josiah's Class
@@ -18,37 +21,101 @@ namespace UIdll
         // Something to represent a Optical camera recognition
         public object OCR { get; set; }
 
-        public string ElevatorLicenseCam()
+        public void ElevatorLicenseCam(DateTime time, bool licensePlateResult)
         {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = "Server=cis1.actx.edu;Database=project2;User Id=db2;Password = db20;";
+            connection.Open();
+            Console.WriteLine(connection.ServerVersion);
+
             // storage for license plate
             string licensePlate = String.Empty;
+            bool tryAgain = false;
 
             try
-            {                
+            {       
                 OCR = licensePlate;
+                using (SqlCommand readAllLicensePlates = connection.CreateCommand())
+                {
+                    readAllLicensePlates.CommandText = "select * dbo.Customers";
+
+                    using (SqlDataReader reader = readAllLicensePlates.ExecuteReader())
+                    {
+                        
+                        string licensePlateMatch = "";
+                        do
+                        {
+                            reader.Read();
+                            licensePlateMatch = reader.GetString(8);
+                            if(licensePlate == licensePlateMatch)
+                            {
+                                time = DateTime.Now;
+                                licensePlateResult = true;
+                                tryAgain = true;
+                            }
+                            else
+                            {
+                                time = DateTime.Now;
+                            }
+                        }
+                        while (tryAgain == true);
+                    }
+                }
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-            return licensePlate;
+            connection.Close();
         }
 
-        public string ExitLicenseCam()
+        public void ExitLicenseCam(DateTime time, bool licensePlateResult)
         {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = "Server=cis1.actx.edu;Database=project2;User Id=db2;Password = db20;";
+            connection.Open();
+            Console.WriteLine(connection.ServerVersion);
+
             // storage for license plate
             string licensePlate = String.Empty;
+            bool tryAgain = false;
 
             try
             {
                 OCR = licensePlate;
+                using (SqlCommand readAllLicensePlates = connection.CreateCommand())
+                {
+                    readAllLicensePlates.CommandText = "select * dbo.Customers";
+
+                    using (SqlDataReader reader = readAllLicensePlates.ExecuteReader())
+                    {
+
+                        string licensePlateMatch = "";
+                        do
+                        {
+                            reader.Read();
+                            licensePlateMatch = reader.GetString(8);
+                            if (licensePlate == licensePlateMatch)
+                            {
+                                time = DateTime.Now;
+                                licensePlateResult = true;
+                                tryAgain = true;
+                            }
+                            else
+                            {
+                                time = DateTime.Now;
+                            }
+                        }
+                        while (tryAgain == true);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            return licensePlate;
+            connection.Close();
         }
 
         public bool ElevatorOccupancy()
