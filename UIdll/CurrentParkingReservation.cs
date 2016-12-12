@@ -26,6 +26,7 @@ namespace UIdll
 
         public void searchReservation()
         {
+            connection.Open();
             using (SqlCommand searchID = connection.CreateCommand())
             {
                 // in this method we will finish the code to search and return whether or not the customer has a reservation
@@ -51,10 +52,11 @@ namespace UIdll
         // the following method will add a new reservation to the database
         public void newReservation()
         {
+            connection.Open();
             using (SqlCommand addReservation = connection.CreateCommand())
             {
                 // in this method the code will add a new reservation to the database
-                strin
+                
                 connection.ConnectionString = "Server=cis1.actx.edu;Database=Project2;User Id=db2;Password = db20;";
                 addReservation.CommandText = "insert into dbo.Reservations values ('enter all fields here');";
                 // addReservation.ExecuteNonQuery();
