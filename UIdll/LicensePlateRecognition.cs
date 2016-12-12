@@ -21,6 +21,7 @@ namespace UIdll
         // Something to represent a Optical camera recognition
         public object OCR { get; set; }
 
+        // class for checking the license plate and the time when it checks them in
         public void ElevatorLicenseCam(DateTime time, string licensePlateResult)
         {
             SqlConnection connection = new SqlConnection();
@@ -71,6 +72,7 @@ namespace UIdll
             connection.Close();
         }
 
+        // class for checking the license plate and recording the date for when they leave
         public void ExitLicenseCam(DateTime time, string licensePlateResult)
         {
             SqlConnection connection = new SqlConnection();
@@ -120,6 +122,7 @@ namespace UIdll
             connection.Close();
         }
 
+        // class for checking the occupancy of the elevator
         public bool ElevatorOccupancy()
         {
             bool occupancy = false;
