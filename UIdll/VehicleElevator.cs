@@ -12,7 +12,7 @@ namespace UIdll
         // class for lifting the elevator
         public void Lift()
         {
-            object elevatorLift;
+            // lifting the elevator
         }       
     }
 }
