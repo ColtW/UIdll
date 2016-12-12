@@ -16,13 +16,13 @@ namespace UIdll
         SqlConnection connection = new SqlConnection();
         
 
-        public int reserveID = 0;
+        public int reserveID { get; set; }
         public string confirmation { get; set; }
-        public string reserveDate = "";
-        public string start = "";
-        public string end = "";
-        public string spaceNumber = "";
-        public string custID = "";
+        public string reserveDate { get; set; }
+        public string start { get; set; }
+        public string end { get; set; }
+        public string spaceNumber { get; set; }
+        public string custID { get; set; }
 
         public void searchReservation()
         {
