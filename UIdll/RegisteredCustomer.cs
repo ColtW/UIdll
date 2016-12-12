@@ -23,6 +23,7 @@ namespace UIdll
             mrc.name = "";
 
             mrc.password = "0";
+            mrc.email = "";
         }
     }
 }
