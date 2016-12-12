@@ -12,7 +12,7 @@ namespace UIdll
         public string name;
         public string username;                    //Allows for employees to sign in and customers to access/store vehicles
         public string password;                   //verification purposes
-   
+        public string email;
         public int securityClearenceLevel; //sets access allowance to people of different accounts (employee, guest, registered customer)
 
         //perhaps securityClearenceLevel 1 for guests, 2 for registered, 3 for security guard, and 4 for operator
