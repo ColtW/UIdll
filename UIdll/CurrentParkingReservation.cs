@@ -17,7 +17,7 @@ namespace UIdll
         
 
         public int reserveID = 0;
-        public string confirmation = "";
+        public string confirmation { get; set; }
         public string reserveDate = "";
         public string start = "";
         public string end = "";
