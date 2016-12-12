@@ -15,14 +15,35 @@ namespace UIdll
 
         SqlConnection connection = new SqlConnection();
 
+        int reserveID = 0;
+        string confirmation = "";
+        string reserveDate = "";
+        string start = "";
+        string end = "";
+        string spaceNumber = "";
+        string custID = "";
+
         public string searchReservation()
         {
-            using (SqlCommand searchPlate = connection.CreateCommand())
+            using (SqlCommand searchID = connection.CreateCommand())
             {
                 // in this method we will finish the code to search and return whether or not the customer has a reservation
 
                 connection.ConnectionString = "Server=cis1.actx.edu;Database=Project2;User Id=db2;Password = db20;";
-                // searchPlate.CommandText = "select * from db_tablename.field where Field = 'exactmatch';";
+                searchID.CommandText = "select * from dbo.Reservations where ReservationID = '" + reserveID + "';";
+
+                using (SqlDataReader reader = searchID.ExecuteReader())
+                {
+                    confirmation = reader.GetString(1);
+                    reserveDate = reader.GetString(2);
+                    start = reader.GetString(3);
+                    end = reader.GetString(4);
+                    spaceNumber = reader.GetString(5);
+                    custID = reader.GetString(6);
+
+                }
+
+                
             }
 
             return "";
