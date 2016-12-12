@@ -13,7 +13,7 @@ namespace UIdll
         public void MakeCustomer()
         {
             //make this class talk to the customer window form.
-            Operator nonMember = new Operator();
+            Customer nonMember = new Customer();
 
             nonMember.securityClearenceLevel = 1;
 
