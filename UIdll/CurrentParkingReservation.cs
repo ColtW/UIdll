@@ -16,7 +16,7 @@ namespace UIdll
         SqlConnection connection = new SqlConnection();
         
 
-        public int reserveID { get; set; }
+        public string reserveID { get; set; }
         public string confirmation { get; set; }
         public string reserveDate { get; set; }
         public string start { get; set; }
@@ -30,7 +30,7 @@ namespace UIdll
             using (SqlCommand searchID = connection.CreateCommand())
             {
                 // in this method we will finish the code to search and return whether or not the customer has a reservation
-
+                
                 connection.ConnectionString = "Server=cis1.actx.edu;Database=Project2;User Id=db2;Password = db20;";
                 searchID.CommandText = "select * from dbo.Reservations where ReservationID = '" + reserveID + "';";
 
