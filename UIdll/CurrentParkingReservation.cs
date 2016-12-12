@@ -14,16 +14,17 @@ namespace UIdll
         // search database for current reservation with ID from persons class
 
         SqlConnection connection = new SqlConnection();
+        
 
-        int reserveID = 0;
-        string confirmation = "";
-        string reserveDate = "";
-        string start = "";
-        string end = "";
-        string spaceNumber = "";
-        string custID = "";
+        public int reserveID = 0;
+        public string confirmation = "";
+        public string reserveDate = "";
+        public string start = "";
+        public string end = "";
+        public string spaceNumber = "";
+        public string custID = "";
 
-        public string searchReservation()
+        public void searchReservation()
         {
             using (SqlCommand searchID = connection.CreateCommand())
             {
@@ -45,8 +46,6 @@ namespace UIdll
 
                 
             }
-
-            return "";
         }
 
         // the following method will add a new reservation to the database
@@ -55,9 +54,9 @@ namespace UIdll
             using (SqlCommand addReservation = connection.CreateCommand())
             {
                 // in this method the code will add a new reservation to the database
-
+                strin
                 connection.ConnectionString = "Server=cis1.actx.edu;Database=Project2;User Id=db2;Password = db20;";
-                // addReservation.CommandText = "insert into db_tablename.field values ('enter all fields here');";
+                addReservation.CommandText = "insert into dbo.Reservations values ('enter all fields here');";
                 // addReservation.ExecuteNonQuery();
             }
         }
