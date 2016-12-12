@@ -103,12 +103,25 @@ namespace UIdll
                             {
                                 time = DateTime.Now;
                                 licensePlateResult = licensePlate;
+
+                                using (SqlCommand updateReservedParking = connection.CreateCommand())
+                                {
+                                    updateReservedParking.CommandText = "update dbo.GarageSpaces set Occupied = false;";
+                                    updateReservedParking.ExecuteNonQuery();
+                                }
+
                                 tryAgain = true;
                             }
                             else
                             {
                                 licensePlateResult = licensePlate;
                                 time = DateTime.Now;
+
+                                using (SqlCommand updateReservedParking = connection.CreateCommand())
+                                {
+                                    updateReservedParking.CommandText = "update dbo.GarageSpaces set Occupied = false;";
+                                    updateReservedParking.ExecuteNonQuery();
+                                }
                             }
                         }
                         while (tryAgain == true);
