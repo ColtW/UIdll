@@ -124,6 +124,8 @@ namespace UIdll
                                     updateReservedParking.CommandText = "update dbo.GarageSpaces set Occupied = false;";
                                     updateReservedParking.ExecuteNonQuery();
                                 }
+
+                                fee.GetBill();
                             }
                         }
                         while (tryAgain == true);
