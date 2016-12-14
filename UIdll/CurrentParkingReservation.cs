@@ -35,6 +35,7 @@ namespace UIdll
                 searchID.CommandText = "select * from dbo.Reservations where ReservationID = '" + reserveID + "';";
 
                 using (SqlDataReader reader = searchID.ExecuteReader())
+
                 {
                     confirmation = reader.GetString(1);
                     reserveDate = reader.GetString(2);
@@ -50,7 +51,7 @@ namespace UIdll
         }
 
         // the following method will add a new reservation to the database
-        public void newReservation()
+        public void newReservation(string date, string startTime, string endTime, string licensePlate)
         {
             connection.Open();
             using (SqlCommand addReservation = connection.CreateCommand())
@@ -58,12 +59,12 @@ namespace UIdll
                 // in this method the code will add a new reservation to the database
                 
                 connection.ConnectionString = "Server=cis1.actx.edu;Database=Project2;User Id=db2;Password = db20;";
-                addReservation.CommandText = "insert into dbo.Reservations values ('enter all fields here');";
-                // addReservation.ExecuteNonQuery();
+                addReservation.CommandText = "insert into dbo.Reservations (Date, StartTime, EndTime, LicensePlateNumber) values ('" + date + "," + startTime + "," + endTime + "," + licensePlate + "');";
+                addReservation.ExecuteNonQuery();
             }
         }
 
-        public void deleteReservation()
+        public void deleteReservation(string reserveID)
         {
             using (SqlCommand eraseReservation = connection.CreateCommand())
             {
@@ -71,7 +72,7 @@ namespace UIdll
 
                 connection.ConnectionString = "Server=cis1.actx.edu;Database=Project2;User Id=db2;Password = db20;";
 
-                // eraseReservation.CommandText = "delete from db_tablename.primarykeyfield where field = 'exactmatch';";
+                eraseReservation.CommandText = "delete from dbo.Reservations.ReservationID where ReservationID = '" + reserveID +"';";
             }
         }
 
