@@ -50,7 +50,7 @@ namespace UIdll
         }
 
         // the following method will add a new reservation to the database
-        public void newReservation(string date, string startTime, string endTime, string customerID, string licensePlate)
+        public void newReservation(string date, string startTime, string endTime, string licensePlate)
         {
             connection.Open();
             using (SqlCommand addReservation = connection.CreateCommand())
@@ -58,7 +58,7 @@ namespace UIdll
                 // in this method the code will add a new reservation to the database
                 
                 connection.ConnectionString = "Server=cis1.actx.edu;Database=Project2;User Id=db2;Password = db20;";
-                addReservation.CommandText = "insert into dbo.Reservations (Date, StartTime, EndTime, CustomerID, LicensePlateNumber) values ('" + date + "," + startTime + "," + endTime + "," + customerID + "," + licensePlate + "');";
+                addReservation.CommandText = "insert into dbo.Reservations (Date, StartTime, EndTime, LicensePlateNumber) values ('" + date + "," + startTime + "," + endTime + "," + licensePlate + "');";
                 addReservation.ExecuteNonQuery();
             }
         }
