@@ -27,7 +27,6 @@ namespace UIdll
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = "Server=cis1.actx.edu;Database=project2;User Id=db2;Password = db20;";
             connection.Open();
-            Console.WriteLine(connection.ServerVersion);
 
             // storage for license plate
             string licensePlate = String.Empty;
@@ -78,7 +77,8 @@ namespace UIdll
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = "Server=cis1.actx.edu;Database=project2;User Id=db2;Password = db20;";
             connection.Open();
-            Console.WriteLine(connection.ServerVersion);
+
+            Fee fee = new Fee();
 
             // storage for license plate
             string licensePlate = String.Empty;
@@ -103,12 +103,29 @@ namespace UIdll
                             {
                                 time = DateTime.Now;
                                 licensePlateResult = licensePlate;
+
+                                using (SqlCommand updateReservedParking = connection.CreateCommand())
+                                {
+                                    updateReservedParking.CommandText = "update dbo.GarageSpaces set Occupied = false;";
+                                    updateReservedParking.ExecuteNonQuery();
+                                }
+
+                                fee.GetBill();
+
                                 tryAgain = true;
                             }
                             else
                             {
                                 licensePlateResult = licensePlate;
                                 time = DateTime.Now;
+
+                                using (SqlCommand updateReservedParking = connection.CreateCommand())
+                                {
+                                    updateReservedParking.CommandText = "update dbo.GarageSpaces set Occupied = false;";
+                                    updateReservedParking.ExecuteNonQuery();
+                                }
+
+                                fee.GetBill();
                             }
                         }
                         while (tryAgain == true);
