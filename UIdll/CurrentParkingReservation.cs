@@ -35,6 +35,7 @@ namespace UIdll
                 searchID.CommandText = "select * from dbo.Reservations where ReservationID = '" + reserveID + "';";
 
                 using (SqlDataReader reader = searchID.ExecuteReader())
+
                 {
                     confirmation = reader.GetString(1);
                     reserveDate = reader.GetString(2);
