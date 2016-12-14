@@ -27,11 +27,11 @@ namespace UIdll
 
 
         public string TheTime { get; set; }
-        public int SBill { get; set; }
-        public int LBill { get; set; }
-
+        public double SBill { get; set; }
+        public double LBill { get; set; }
+        public string CustomerId { get; set; }
         public string SCustomerId { get; set; }
-
+        public string IInvoice { get; set; }
         public string nowTime;
         public string nowDate;
         private bool standard;
@@ -43,7 +43,7 @@ namespace UIdll
 
         private string sCustomerID;
         private string sHourlyCharge;
-        private int intHourlyCharge;
+        private double intHourlyCharge;
         private DateTime lngRTimeIn;
         private DateTime lngRTimeOut;
         private DateTime lngATimeIn;
@@ -51,9 +51,10 @@ namespace UIdll
         private DateTime lngRTimeDiff;
         private DateTime lngATimeDiff;
         private DateTime detStandardTime;
-        private Object updateAllCharges;
+        //private Object updateAllCharges;
         private string cCreditCard;
-        private List<string> dailyFees = new List<string>();
+        private int iInvoiceFee;
+        SqlConnection connection = new SqlConnection();
 
         // This method connects to the database and pulls information needed.
         public void ConnectReadAndCloseDataBase()
@@ -62,18 +63,18 @@ namespace UIdll
             nowDate = DateTime.Now.ToString("MMMM:dd:YYYY");
 
 
-            SqlConnection connection = new SqlConnection();
+
             connection.ConnectionString = "Server=cis1.actx.edu;Database=Project2;User Id=db2;Password = db20;";
             connection.Open();
             using (SqlCommand readAllReservationsRecords = connection.CreateCommand())
             {
-                readAllReservationsRecords.CommandText = "select * from dbo.Reservations where ActualEndTime = nowTime' and Date = 'nowDate';";
-
+                //readAllReservationsRecords.CommandText = "select * from dbo.Reservations where ActualEndTime = '" + DateTime.Now + "';";
+                readAllReservationsRecords.CommandText = "select * from dbo.Reservations;";
                 using (SqlDataReader reader = readAllReservationsRecords.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        SCustomerId = reader.GetString(1);
+                        SCustomerId = reader.GetInt32(1).ToString();
                         sRTimeIn = reader.GetString(3);
                         sRTimeOut = reader.GetString(4);
                         sATimeIn = reader.GetString(7);
@@ -89,34 +90,19 @@ namespace UIdll
                 {
                     while (reader.Read())
                     {
-                        sHourlyCharge = reader.GetString(2);
-                        SCustomerId = reader.GetString(1);
+                        sHourlyCharge = reader.GetDouble(2).ToString();
+                        SCustomerId = reader.GetInt32(1).ToString();
 
 
                     }
                 }
 
             }
-            using (SqlCommand readAllAllCharges = connection.CreateCommand())
-            {
-                readAllAllCharges.CommandText = "select * from dbo.AllCharges where HourlyCharge != 0;";
-
-                using (SqlDataReader reader = readAllAllCharges.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-
-                        SCustomerId = reader.GetString(1);
-                        //dailyFees = reader.GetString(7);
-
-                    }
-                }
-
-            }
+            
 
             using (SqlCommand readAllCustomers = connection.CreateCommand())
             {
-                readAllCustomers.CommandText = "select * from dbo.Customers where HourlyCharge != 0;";
+                readAllCustomers.CommandText = "select * from dbo.Customers;";
 
                 using (SqlDataReader reader = readAllCustomers.ExecuteReader())
                 {
@@ -131,20 +117,64 @@ namespace UIdll
             }
             connection.Close();
         }
+        public void GetEachCustomer()
+        {
+            connection.Open();
+            using (SqlCommand readAllAllCharges = connection.CreateCommand())
+            {
+                readAllAllCharges.CommandText = "select * from dbo.AllCharges where CustomerID = '" + CustomerId + "';";
+
+                using (SqlDataReader reader = readAllAllCharges.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        CustomerId = reader.GetInt32(1).ToString();
+                        GetChargesPerCustomer();
+
+                    }
+                }
+            }
+            connection.Close();
+        }
+
+
+        public void GetChargesPerCustomer()
+        {
+            connection.Open();
+            using (SqlCommand readAllAllCharges = connection.CreateCommand())
+            {
+                readAllAllCharges.CommandText = "select * from dbo.AllCharges where CustomerID = '" + CustomerId + "';";
+              
+                using (SqlDataReader reader = readAllAllCharges.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        SCustomerId = reader.GetString(1);
+                        iInvoiceFee += int.Parse(reader.GetString(7));
+
+                    }
+                }
+            }
+            using (SqlCommand upDateAllCharges = connection.CreateCommand())
+            {
+                upDateAllCharges.CommandText = "update dbo.AllCharges set TotalCharges = '" + IInvoice + "' where CustomerId = '" + SCustomerId + "';";
+                upDateAllCharges.ExecuteNonQuery();
+            }
+
+            connection.Close();
+        }
         // This method changes the strings from the database to usable information
         public void ParseNeededInformation()
         {
             ConnectReadAndCloseDataBase();
-            lngRTimeIn = DateTime.ParseExact("RTimeIn", "HH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-            lngRTimeOut = DateTime.ParseExact("RTimeOut", "HH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-            lngATimeIn = DateTime.ParseExact("ATimeIn", "HH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-            lngATimeOut = DateTime.ParseExact("ATimeOut", "HH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-
-
+            lngRTimeIn = DateTime.ParseExact(sRTimeIn, "yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
+            lngRTimeOut = DateTime.ParseExact(sRTimeOut, "yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
+            lngATimeIn = DateTime.ParseExact(sATimeIn, "yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
+            lngATimeOut = DateTime.ParseExact(sATimeOut, "yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
+           
         }
-
-
-
         public void DetermineTime()
         // This method fands the timespan for the visit.
         {
@@ -171,17 +201,16 @@ namespace UIdll
             }
         }
 
-
         // This method determines the fees for the visit
         public void GetBill()
         {
             DetermineTime();
             ConnectReadAndCloseDataBase();
             DetermineStandardTime();
-            SBill = int.Parse(sHourlyCharge) * lngRTimeDiff.Minute;
+            SBill = double.Parse(sHourlyCharge) * lngRTimeDiff.Minute;
             if (standard == false)
             {
-                SBill += (int.Parse(sHourlyCharge) * 2) * (lngATimeDiff.Minute - lngRTimeDiff.Minute);
+                SBill += (double.Parse(sHourlyCharge) * 2) * (lngATimeDiff.Minute - lngRTimeDiff.Minute);
             }
             UpdateIndividualFee();
 
@@ -196,28 +225,22 @@ namespace UIdll
             //SqlCommand getAllAllChargesRecs = connection.CreateCommand();
             using (SqlCommand upDateAllCharges = connection.CreateCommand())
             {
-                //updateAllCharges.CommandText = "update dbo.AllCharges set IndividualFee = SBill where CustomerId = SCustomerId;";
-                //updateAllCharges.StatementCompleted += updateAllCharges_StatementCompleted;
-                //updateAllCharges.ExecuteNonQuery();
+                upDateAllCharges.CommandText = "update dbo.AllCharges set IndividualFee = '" + SBill + "' where CustomerId = '" + SCustomerId + "';";
+                upDateAllCharges.ExecuteNonQuery();
             }
             connection.Close();
 
         }
 
         // Add fees together and charge customer
-        public void GenerateInvoice()
-        {
-            ConnectReadAndCloseDataBase();
-            foreach (string dailyFee in dailyFees)
-            {
-                //iCustumerFee += int.Parse(dailyFees);
-            }
-
-        }
+    
         public void ChargeCreditCard()
         {
+           
             ConnectReadAndCloseDataBase();
-            // charge creditcard
+
+
+            // charge creditcard Invoice Fee
         }
 
 
