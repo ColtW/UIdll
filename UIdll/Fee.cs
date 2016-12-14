@@ -40,8 +40,6 @@ namespace UIdll
         private string sRTimeOut;
         private string sATimeIn;
         private string sATimeOut;
-
-        private string sCustomerID;
         private string sHourlyCharge;
         private double intHourlyCharge;
         private DateTime lngRTimeIn;
